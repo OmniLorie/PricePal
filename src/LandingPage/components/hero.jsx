@@ -1,4 +1,3 @@
-import { FaGasPump, FaDollarSign, FaTaxi, FaEllipsisH } from "react-icons/fa";
 import HeroImage from "../../assets/images/hero1.jpg";
 import Typewriter from "typewriter-effect";
 
@@ -17,9 +16,9 @@ const Hero = () => {
       {/* Content */}
       <div className="relative container mx-auto px-4 grid grid-cols-1 md:grid-cols-6 z-10 text-center md:text-left">
         {/* Text Section */}
-        <div className="col-span-4 flex flex-col justify-center">
+        <div className="col-span-4 flex flex-col gap-8 justify-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 leading-tight">
-            Explore real-time commodity prices{" "}
+            Explore real-time commodity prices
             <br className="hidden md:block" />
             in Ghana
           </h1>
