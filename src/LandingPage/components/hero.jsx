@@ -1,49 +1,41 @@
-
 import { FaGasPump, FaDollarSign, FaTaxi, FaEllipsisH } from "react-icons/fa";
+import HeroImage from "../../assets/images/hero1.jpg";
+import Typewriter from "typewriter-effect";
 
 const Hero = () => {
   return (
-    <>
-      {/* Navbar */}
-      <nav className="w-full py-4 px-6 bg-black text-amber-500 flex justify-between items-center">
-        <div className="text-4xl font-bold">PricePal</div>
-        <div className="flex items-center">
-          <input
-            type="text"
-            placeholder="Search"
-            className="px-4 py-2 rounded-l-full text-black"
-          />
-          <button className="px-4 py-2 bg-amber-500 text-black rounded-r-full">
-            Search
-          </button>
-        </div>
-      </nav>
-      <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white h-[80vh] flex flex-col justify-center items-center">
-        <div className="text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Explore real-time commodity prices in Ghana
+    <div className="relative h-[80vh] flex flex-col justify-center items-center text-gray-900">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={HeroImage}
+          alt="Hero"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="relative container mx-auto px-4 grid grid-cols-1 md:grid-cols-6 z-10 text-center md:text-left">
+        {/* Text Section */}
+        <div className="col-span-4 flex flex-col justify-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 leading-tight">
+            Explore real-time commodity prices{" "}
+            <br className="hidden md:block" />
+            in Ghana
           </h1>
-          <p className="text-xl md:text-2xl mb-8">
-            From fuel, to forex, to long rides, and many more.
+          <p className="ibm-plex-mono-semibold text-lg sm:text-xl md:text-2xl mb-8 text-gray-900 font-light">
+            <Typewriter
+              options={{
+                strings: ["Fuel, Forex, Long Rides and More..."],
+                autoStart: true,
+                loop: true,
+                deleteSpeed: 10,
+              }}
+            />
           </p>
         </div>
-        <div className="w-1/2 overflow-hidden">
-          <div className="flex justify-between animate-marquee">
-            <FaGasPump className="text-3xl mx-4" />
-            <FaDollarSign className="text-3xl mx-4" />
-            <FaTaxi className="text-3xl mx-4" />
-            <FaEllipsisH className="text-3xl mx-4" />
-            <FaGasPump className="text-3xl mx-4" />
-            <FaDollarSign className="text-3xl mx-4" />
-            <FaTaxi className="text-3xl mx-4" />
-            <FaEllipsisH className="text-3xl mx-4" />
-          </div>
-        </div>
-        <button className="mt-8 px-6 py-2 w-1/4 bg-black shadow-lg text-amber-500 rounded-full text-lg font-semibold hover:bg-amber-600 hover:text-white transition duration-300">
-          Get Started
-        </button>
       </div>
-    </>
+    </div>
   );
 };
 
