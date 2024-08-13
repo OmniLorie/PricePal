@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import CategoryTile from "./category-tile";
+import Shell from "../../assets/images/Shell.png";
+import Total from "../../assets/images/total energies.jpeg";
+import Goil from "../../assets/images/Goil logo.jpeg";
+import ForexSummaryTable from "./forex-table";
 
 const categoriesTabs = [
   { name: "FUEL", value: "fuel" },
@@ -12,6 +16,49 @@ const categories = [
     title: "Fuel",
     path: "/fuel",
     headings: ["Company Name", "Petrol", "Diesel", "Premium"],
+    data: [
+      {
+        companyLogo: Shell,
+        companyName: "Shell",
+        petrol: "15.6",
+        diesel: "10.8",
+        premium: "17.9",
+      },
+      {
+        companyLogo: Total,
+        companyName: "Total Energies",
+        petrol: "15.7",
+        diesel: "10.9",
+        premium: "18.00",
+      },
+      {
+        companyLogo: Goil,
+        companyName: "Goil",
+        petrol: "15.5",
+        diesel: "10.3",
+        premium: "17.5",
+      },
+    ],
+  },
+  {
+    title: "Forex",
+    path: "/forex",
+    headings: ["Bank", "Buying", "Selling", "Mid-rate"],
+    data: ["Shel", "", "", ""],
+  },
+  {
+    title: "Fuel",
+    path: "/fuel",
+    headings: ["Company Name", "Petrol", "Diesel", "Premium"],
+    data: [
+      {
+        companyLogo: Shell,
+        companyName: "Shell",
+        petrol: "15.6",
+        diesel: "10.8",
+        premium: "17.9",
+      },
+    ],
   },
 ];
 
@@ -31,7 +78,7 @@ const PricePreview = () => {
   };
   return (
     <div className="bg-gray-200 py-16">
-      <div className="container mx-auto flex flex-col gap-4 w-full ">
+      <div className="container mx-auto flex flex-col gap-8 w-full ">
         <div className="flex gap-8 items-center justify-center align-middle">
           {categoriesTabs.map((category, index) => {
             return (
@@ -50,7 +97,8 @@ const PricePreview = () => {
           })}
         </div>
         <div>
-          <CategoryTile category={category} />
+          {categorytoView === "fuel" && <CategoryTile category={category} />}
+          {categorytoView === "forex" && <ForexSummaryTable />}
         </div>
       </div>
     </div>
