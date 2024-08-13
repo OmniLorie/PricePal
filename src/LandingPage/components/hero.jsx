@@ -22,7 +22,7 @@ const Hero = () => {
             <br className="hidden md:block" />
             in Ghana
           </h1>
-          <p className="ibm-plex-mono-semibold text-lg sm:text-xl md:text-2xl mb-8 text-gray-900 font-light">
+          <p className="ibm-plex-mono-semibold text-lg sm:text-xl md:text-2xl mb-8 text-red-600 font-semibold">
             <Typewriter
               options={{
                 strings: ["Fuel, Forex, Long Rides and More..."],

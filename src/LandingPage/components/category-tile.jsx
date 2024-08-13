@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const CategoryTile = (props) => {
   return (
     <div className="flex flex-col w-full px-8  md:w-[90%] mx-auto ">
-      <div className="flex justify-between px-8 mb-4 items-center">
+      <div className="flex justify-between px-16 mb-4 items-center">
         <h4 className="font-bold text-gray-800 text-xl">
           {props.category?.title.toUpperCase()}
         </h4>
