@@ -3,6 +3,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Link } from "vite-react-router-dom";
 
 const links = [
+  { name: "Admin", path: "/admin" },
   { name: "Fuel", path: "/fuel" },
   { name: "Forex", path: "/forex" },
   { name: "Rides", path: "/rides" },
