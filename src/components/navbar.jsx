@@ -2,6 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Link } from "vite-react-router-dom";
 
+const links = [
+  { name: "Fuel", path: "/fuel" },
+  { name: "Forex", path: "/forex" },
+  { name: "Rides", path: "/rides" },
+  { name: "About-Us", path: "/about" },
+  { name: "Contact-Us", path: "/contact" },
+];
+
 const Navbar = () => {
   const navbarRef = useRef(null);
   const [navbarHeight, setNavbarHeight] = useState(0);
@@ -22,7 +30,7 @@ const Navbar = () => {
           <Link to="/" className="text-4xl font-bold text-primary-dark">
             PricePal
           </Link>
-          <div className="flex items-center px-2 py-2 border-2 rounded-full shadow-sm">
+          <div className="flex items-center px-2 py-2 border-2 border-black rounded-full shadow-sm">
             <input
               type="text"
               placeholder="Search"
@@ -33,8 +41,13 @@ const Navbar = () => {
             </button>
           </div>
           <div className="flex gap-6 items-center align-middle">
-            <Link to="/admin">Admin</Link>
-            <Link to="/about">About</Link>
+            {links.map((link, index) => {
+              return (
+                <Link key={index} to={link.path}>
+                  {link.name}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </nav>
