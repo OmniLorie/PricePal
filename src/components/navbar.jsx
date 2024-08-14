@@ -31,7 +31,11 @@ const Navbar = () => {
             <button className="px-4 py-2 text-gray-700">
               <MagnifyingGlassIcon className="h-5 w-5" />
             </button>
-          </div>{" "}
+          </div>
+          <div className="flex gap-6 items-center align-middle">
+            <Link to="/admin">Admin</Link>
+            <Link to="/about">About</Link>
+          </div>
         </div>
       </nav>
 

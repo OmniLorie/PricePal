@@ -62,7 +62,7 @@ const categories = [
   },
 ];
 
-const PricePreview = () => {
+const PricePreview = (props) => {
   const [categorytoView, setCategoryToView] = useState("fuel");
   const [category, setCategory] = useState(null);
 
@@ -77,34 +77,32 @@ const PricePreview = () => {
     );
   };
   return (
-   
-      <div
-        className="container w-[90%] md:w-[80%] mx-auto flex flex-col gap-8 bg-white rounded-xl py-8 absolute left-0 right-0 -top-[15%] shadow-5xl"
-        style={{ margin: "auto" }}
-      >
-        <div className="flex gap-4 md:gap-8 items-center justify-center align-middle flex-wrap">
-          {categoriesTabs.map((category, index) => {
-            return (
-              <button
-                key={index}
-                className={`text-gray-900 p-3 md:p-4 rounded-md shadow-md w-[120px] md:w-[150px] font-semibold ${
-                  categorytoView === category.value
-                    ? "bg-primary-main text-red-600 shadow-sm font-extrabold"
-                    : "bg-complementary"
-                } hover:shadow-xl`}
-                onClick={() => handleCategoryChange(category.value)}
-              >
-                {category.name}
-              </button>
-            );
-          })}
-        </div>
-        <div>
-          {categorytoView === "fuel" && <CategoryTile category={category} />}
-          {categorytoView === "forex" && <ForexSummaryTable />}
-        </div>
+    <div
+      className="container w-[90%] md:w-[80%] mx-auto flex flex-col gap-8 bg-white rounded-xl py-8 absolute left-0 right-0 -top-[15%] shadow-5xl"
+      style={{ margin: "auto" }}
+    >
+      <div className="flex gap-4 md:gap-8 items-center justify-center align-middle flex-wrap">
+        {categoriesTabs.map((category, index) => {
+          return (
+            <button
+              key={index}
+              className={`text-gray-900 p-3 md:p-4 rounded-md shadow-md w-[120px] md:w-[150px] font-semibold ${
+                categorytoView === category.value
+                  ? "bg-primary-main text-red-600 shadow-sm font-extrabold"
+                  : "bg-complementary"
+              } hover:shadow-xl`}
+              onClick={() => handleCategoryChange(category.value)}
+            >
+              {category.name}
+            </button>
+          );
+        })}
       </div>
-    
+      <div>
+        {categorytoView === "fuel" && <CategoryTile category={category} />}
+        {categorytoView === "forex" && <ForexSummaryTable />}
+      </div>
+    </div>
   );
 };
 
