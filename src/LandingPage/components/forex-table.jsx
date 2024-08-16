@@ -1,12 +1,35 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { apiCategory } from "../../services/categories";
 
 import { forexData } from "../../library/data-placeholder";
 
 const headings = ["Bank", "Buying", "Selling", "Mid-rate"];
 
-const ForexSummaryTable = () => {
+const ForexSummaryTable = ({ categoryId }) => {
+  const [loading, setLoading] = useState(false);
+  const [category, setCategory] = useState(null);
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
+
+  const fetchCagegory = async (id) => {
+    setLoading(true);
+    try {
+      const response = await apiCategory(id);
+      if (response.status === 200) {
+        setCategory(response.data);
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.log("Eror fetching category", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCagegory(categoryId);
+  }, []);
 
   const handleCurrencyChange = (e) => {
     setSelectedCurrency(e.target.value);
