@@ -16,9 +16,21 @@ const Navbar = () => {
   const [navbarHeight, setNavbarHeight] = useState(0);
 
   useEffect(() => {
-    if (navbarRef.current) {
-      setNavbarHeight(navbarRef.current.offsetHeight);
-    }
+    const handleResize = () => {
+      if (navbarRef.current) {
+        setNavbarHeight(navbarRef.current.offsetHeight);
+      }
+    };
+
+    // Set initial navbar height
+    handleResize();
+
+    // Update navbar height on window resize
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
@@ -31,16 +43,6 @@ const Navbar = () => {
           <Link to="/" className="text-4xl font-bold text-primary-dark">
             <img src={Logo} width={200} alt="logo" />
           </Link>
-          {/* <div className="flex items-center px-2 py-2 border-2 border-black rounded-full shadow-sm">
-            <input
-              type="text"
-              placeholder="Search"
-              className="px-4 py-2 text-black bg-transparent outline-none "
-            />
-            <button className="px-4 py-2 text-gray-700">
-              <MagnifyingGlassIcon className="h-5 w-5" />
-            </button>
-          </div> */}
           <div className="flex gap-6 items-center align-middle">
             {links.map((link, index) => {
               return (
@@ -53,7 +55,11 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <div style={{ marginTop: navbarHeight }}></div>
+      {/* Spacer div with dynamic margin based on navbar height */}
+      <div style={{ marginTop: `${navbarHeight}px` }}></div>
+
+      {/* Rest of the content */}
+      <div className="content">{/* Your page content here */}</div>
     </div>
   );
 };
