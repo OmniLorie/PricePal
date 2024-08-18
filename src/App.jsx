@@ -2,8 +2,10 @@ import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./layouts/rootlayout";
 import LandingPage from "./LandingPage";
-import About from "./About";
 import NotFound from "./NotFound";
+import Fuel from "./Fuel";
+import Forex from "./Forex";
+import Rides from "./Rides";
 
 const router = createBrowserRouter([
   {
@@ -11,7 +13,9 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <LandingPage /> },
-      { path: "/about", element: <About /> },
+      { path: "/fuel", element: <Fuel /> },
+      { path: "/forex", element: <Forex /> },
+      { path: "/rides", element: <Rides /> },
       { path: "*", element: <NotFound /> },
     ],
   },

@@ -164,7 +164,9 @@ const RidesSummaryTable = () => {
           dataToDisplay.map((company, index) => (
             <div
               key={index}
-              className="grid grid-cols-2 sm:grid-cols-5 gap-4 py-4 items-center px-4 sm:px-5"
+              className={`grid grid-cols-2 sm:grid-cols-5 gap-4 py-4 items-center px-4 ${
+                index % 2 === 0 ? "bg-gray-50" : "bg-white"
+              } sm:px-5`}
             >
               <div className="flex items-center gap-2 col-span-2 sm:col-span-1">
                 <img
@@ -201,15 +203,14 @@ const RidesSummaryTable = () => {
             No rides available for the selected route
           </p>
         )}
-
-        <div className="flex justify-end items-center mt-4">
-          <Link
-            to="/rides"
-            className="text-blue-500 underline text-sm sm:text-base mt-4 sm:mt-0"
-          >
-            Show more
-          </Link>
-        </div>
+      </div>
+      <div className="flex justify-end items-center mt-6">
+        <Link
+          to="/rides"
+          className="text-blue-500 underline text-sm sm:text-base mt-4 sm:mt-0"
+        >
+          Show more
+        </Link>
       </div>
     </div>
   );

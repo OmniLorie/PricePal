@@ -43,7 +43,7 @@ const PricePreview = () => {
 
   return (
     <div
-      className="container w-[90%] md:w-[80%] mx-auto flex flex-col gap-8 bg-white rounded-xl py-8 absolute left-0 right-0 -top-[15%] shadow-5xl"
+      className="container w-[90%] md:w-[80%] mx-auto flex flex-col gap-8 bg-white rounded-xl py-8 absolute left-0 right-0 -top-[15%] shadow-2xl"
       style={{ margin: "auto" }}
     >
       <div className="flex gap-4 md:gap-8 items-center justify-center align-middle flex-wrap">

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo.png";
 
@@ -7,36 +6,25 @@ const links = [
   { name: "Fuel", path: "/fuel" },
   { name: "Forex", path: "/forex" },
   { name: "Rides", path: "/rides" },
-  { name: "About-Us", path: "/about" },
   { name: "Contact-Us", path: "/contact" },
 ];
 
 const Navbar = () => {
-  const navbarRef = useRef(null);
-  const [navbarHeight, setNavbarHeight] = useState(0);
+  const navRef = useRef(null);
+  const [navHeight, setNavHeight] = useState(0);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (navbarRef.current) {
-        setNavbarHeight(navbarRef.current.offsetHeight);
-      }
-    };
-
-    // Set initial navbar height
-    handleResize();
-
-    // Update navbar height on window resize
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    if (navRef.current) {
+      // Get the height of the navbar after it renders
+      const height = navRef.current.offsetHeight;
+      setNavHeight(height);
+    }
   }, []);
 
   return (
     <div>
       <nav
-        ref={navbarRef}
+        ref={navRef}
         className="glass fixed top-0 left-0 w-full py-4 px-6 text-black flex justify-between items-center z-50 shadow-md"
       >
         <div className="container mx-auto flex justify-between items-center">
@@ -56,10 +44,7 @@ const Navbar = () => {
       </nav>
 
       {/* Spacer div with dynamic margin based on navbar height */}
-      <div style={{ marginTop: `${navbarHeight}px` }}></div>
-
-      {/* Rest of the content */}
-      <div className="content">{/* Your page content here */}</div>
+      <div style={{ marginTop: `${navHeight}px` }}></div>
     </div>
   );
 };

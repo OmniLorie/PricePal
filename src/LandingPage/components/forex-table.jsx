@@ -44,19 +44,13 @@ const ForexSummaryTable = ({ category }) => {
           >
             <option value="Dollar">USD</option>
             <option value="Euro">EURO</option>
-            <option value="Pound">POUND</option>
+            <option value="Pound Sterling">POUND</option>
           </select>
         </div>
-        <Link
-          to="/forex"
-          className="text-blue-500 underline text-sm sm:text-base"
-        >
-          Show more
-        </Link>
       </div>
 
       {/* ----------------Table Heading--------------------- */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 shadow-md rounded-md p-4 font-semibold text-base sm:text-lg bg-gray-300">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 shadow-md rounded-t-md p-4 font-semibold text-base sm:text-lg bg-gray-300">
         {headings.map((heading, index) => (
           <p key={index} className="text-gray-700">
             {heading}
@@ -68,7 +62,7 @@ const ForexSummaryTable = ({ category }) => {
         {dataToDisplay.map((d, index) => (
           <div
             className={`grid grid-cols-2 sm:grid-cols-4 text-xs sm:text-sm text-gray-600 ${
-              index % 2 === 0 ? "bg-gray-50" : "bg-white"
+              index % 2 === 0 ? "bg-gray-100" : "bg-white"
             } gap-4 py-4 items-center px-4 sm:px-5`}
             key={index}
           >
@@ -85,6 +79,14 @@ const ForexSummaryTable = ({ category }) => {
             <p className="pl-1 col-span-1 sm:col-span-1">{d.midRate}</p>
           </div>
         ))}
+      </div>
+      <div className="flex justify-end items-center w-full mt-6">
+        <Link
+          to="/forex"
+          className="text-blue-500 underline text-sm sm:text-base"
+        >
+          Show more
+        </Link>
       </div>
     </div>
   );

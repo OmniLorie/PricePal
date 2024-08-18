@@ -11,12 +11,9 @@ const FuelSummaryTable = (props) => {
         <h4 className="font-bold text-gray-800 text-xl">
           {props.category?.categoryName?.toUpperCase()}
         </h4>
-        <Link to={props.category?.path} className="text-blue-500 underline">
-          Show more
-        </Link>
       </div>
       {/* ----------------Table Heading--------------------- */}
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 shadow-md rounded-md p-4 font-semibold text-lg bg-gray-300">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 shadow-md rounded-t-md p-4 font-semibold text-lg bg-gray-300">
         {headings.map((heading, index) => {
           return (
             <p key={index}>
@@ -27,6 +24,7 @@ const FuelSummaryTable = (props) => {
       </div>
       <div className="border-y">
         {props.category?.companies.map((company, index) => {
+          if (index > 2) return;
           return (
             <div
               className={`grid text-sm text-gray-600 ${
@@ -36,7 +34,7 @@ const FuelSummaryTable = (props) => {
             >
               <div className="flex align-middle items-center gap-2">
                 <img
-                  src={`https://savefiles.org/${company.companyLogo}?shareable_link=329`}
+                  src={`https://savefiles.org/${company.logo}?shareable_link=329`}
                   alt={company.companyName}
                   className="size-6"
                 />
@@ -55,6 +53,11 @@ const FuelSummaryTable = (props) => {
             </div>
           );
         })}{" "}
+      </div>
+      <div className="flex justify-end items-center w-full mt-6">
+        <Link to="/fuel" className="text-blue-500 underline">
+          Show more
+        </Link>
       </div>
     </div>
   );
