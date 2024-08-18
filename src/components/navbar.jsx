@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
+import Logo from "../assets/images/logo.png";
 
 const links = [
-  { name: "Admin", path: "/admin" },
   { name: "Fuel", path: "/fuel" },
   { name: "Forex", path: "/forex" },
   { name: "Rides", path: "/rides" },
@@ -29,9 +29,9 @@ const Navbar = () => {
       >
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/" className="text-4xl font-bold text-primary-dark">
-            PricePal
+            <img src={Logo} width={200} alt="logo" />
           </Link>
-          <div className="flex items-center px-2 py-2 border-2 border-black rounded-full shadow-sm">
+          {/* <div className="flex items-center px-2 py-2 border-2 border-black rounded-full shadow-sm">
             <input
               type="text"
               placeholder="Search"
@@ -40,7 +40,7 @@ const Navbar = () => {
             <button className="px-4 py-2 text-gray-700">
               <MagnifyingGlassIcon className="h-5 w-5" />
             </button>
-          </div>
+          </div> */}
           <div className="flex gap-6 items-center align-middle">
             {links.map((link, index) => {
               return (
