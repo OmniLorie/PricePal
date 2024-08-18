@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
-const CategoryTile = (props) => {
+const headings = ["Company", "Petrol", "Diesel", "Premium"];
+
+const FuelSummaryTable = (props) => {
+  console.log("Fuel category---->", props.category);
   return (
     <div className="flex flex-col w-full px-8  md:w-[90%] mx-auto ">
       <div className="flex justify-between px-16 mb-4 items-center">
         <h4 className="font-bold text-gray-800 text-xl">
-          {props.category?.title.toUpperCase()}
+          {props.category?.categoryName?.toUpperCase()}
         </h4>
         <Link to={props.category?.path} className="text-blue-500 underline">
           Show more
@@ -14,7 +17,7 @@ const CategoryTile = (props) => {
       </div>
       {/* ----------------Table Heading--------------------- */}
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 shadow-md rounded-md p-4 font-semibold text-lg bg-gray-300">
-        {props.category?.headings.map((heading, index) => {
+        {headings.map((heading, index) => {
           return (
             <p key={index}>
               {heading} {index > 0 ? "GHC" : ""}
@@ -23,7 +26,7 @@ const CategoryTile = (props) => {
         })}
       </div>
       <div className="border-y">
-        {props.category?.data.map((d, index) => {
+        {props.category?.companies.map((company, index) => {
           return (
             <div
               className={`grid text-sm text-gray-600 ${
@@ -33,15 +36,22 @@ const CategoryTile = (props) => {
             >
               <div className="flex align-middle items-center gap-2">
                 <img
-                  src={d.companyLogo}
-                  alt={d.companyName}
+                  src={`https://savefiles.org/${company.companyLogo}?shareable_link=329`}
+                  alt={company.companyName}
                   className="size-6"
                 />
-                <p className="pl-1">{d.companyName}</p>
+                <p className="pl-1">{company.companyName}</p>
               </div>
-              <p className="pl-1">{d.petrol}</p>
-              <p className="pl-1">{d.diesel}</p>
-              <p className="pl-1">{d.premium}</p>
+              {["Petrol", "Diesel", "Premium"].map((productType) => {
+                const product = company.products.find(
+                  (product) => product.productName === productType
+                );
+                return (
+                  <p key={productType} className="pl-1">
+                    {product ? product.price : "N/A"}
+                  </p>
+                );
+              })}
             </div>
           );
         })}{" "}
@@ -50,4 +60,4 @@ const CategoryTile = (props) => {
   );
 };
 
-export default CategoryTile;
+export default FuelSummaryTable;

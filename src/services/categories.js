@@ -6,3 +6,6 @@ export const apiCategories = async () => {
 export const apiCategory = async (id) => {
   return apiClient.get(`/admin/category/${id}`);
 };
+export const apiCategoryByName = async (categoryName) => {
+  return apiClient.get(`/admin/categories/${categoryName}`);
+};

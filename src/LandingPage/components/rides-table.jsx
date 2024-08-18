@@ -45,8 +45,8 @@ const prices = [
   },
 ];
 
-const Rides = () => {
-  const [from, setFrom] = useState("ksi");
+const RidesSummaryTable = () => {
+  const [from, setFrom] = useState(null);
   const [destination, setDestination] = useState(null);
   const [dataToDisplay, setDataToDisplay] = useState([]);
 
@@ -215,4 +215,4 @@ const Rides = () => {
   );
 };
 
-export default Rides;
+export default RidesSummaryTable;

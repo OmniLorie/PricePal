@@ -1,42 +1,35 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { apiCategory } from "../../services/categories";
-
-import { forexData } from "../../library/data-placeholder";
 
 const headings = ["Bank", "Buying", "Selling", "Mid-rate"];
 
-const ForexSummaryTable = ({ categoryId }) => {
-  const [loading, setLoading] = useState(false);
-  const [category, setCategory] = useState(null);
-  const [selectedCurrency, setSelectedCurrency] = useState("USD");
+const ForexSummaryTable = ({ category }) => {
+  console.log("Forex Category--->", category);
 
-  const fetchCagegory = async (id) => {
-    setLoading(true);
-    try {
-      const response = await apiCategory(id);
-      if (response.status === 200) {
-        setCategory(response.data);
-        console.log(response.data);
-      }
-    } catch (error) {
-      console.log("Eror fetching category", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchCagegory(categoryId);
-  }, []);
+  const [selectedCurrency, setSelectedCurrency] = useState("Dollar");
 
   const handleCurrencyChange = (e) => {
     setSelectedCurrency(e.target.value);
   };
 
-  const dataToDisplay =
-    forexData.find((item) => item.currency === selectedCurrency)?.data || [];
+  const dataToDisplay = category?.companies.map((company) => {
+    const products = company.products.filter(
+      (product) => product.productName === selectedCurrency
+    );
+    const buying = products.find((p) => p.state === "Buying")?.price || "N/A";
+    const selling = products.find((p) => p.state === "Selling")?.price || "N/A";
+    const midRate =
+      products.find((p) => p.state === "Mid Rate")?.price || "N/A";
+
+    return {
+      bankName: company.companyName,
+      bankLogo: company.logo,
+      buying,
+      selling,
+      midRate,
+    };
+  });
 
   return (
     <div className="flex flex-col w-full px-4 sm:px-6 md:w-[90%] mx-auto">
@@ -49,9 +42,9 @@ const ForexSummaryTable = ({ categoryId }) => {
             onChange={handleCurrencyChange}
             className="border border-gray-300 rounded p-2 text-gray-700"
           >
-            <option value="USD">USD</option>
-            <option value="POUND">POUND</option>
-            <option value="EURO">EURO</option>
+            <option value="Dollar">USD</option>
+            <option value="Euro">EURO</option>
+            <option value="Pound">POUND</option>
           </select>
         </div>
         <Link
@@ -81,7 +74,7 @@ const ForexSummaryTable = ({ categoryId }) => {
           >
             <div className="flex items-center gap-2 col-span-2 sm:col-span-1">
               <img
-                src={d.bankLogo}
+                src={`https://savefiles.org/${d.bankLogo}?shareable_link=329`}
                 alt={d.bankName}
                 className="w-5 h-5 sm:w-6 sm:h-6"
               />
