@@ -191,9 +191,13 @@ const RidesSummaryTable = () => {
                     }
                   </p>
                   <p className="pl-1">{price.amount}</p>
-                  <Link className="p-2 rounded-md shadow-md w-[120px] text-center font-semibold bg-red-500 text-white hover:bg-red-700">
+                  <a
+                    href="https://ticketting.netlify.app/"
+                    target="_blank"
+                    className="p-2 rounded-md shadow-md w-[120px] text-center font-semibold bg-red-500 text-white hover:bg-red-700"
+                  >
                     Book Ticket
-                  </Link>
+                  </a>
                 </div>
               ))}
             </div>
