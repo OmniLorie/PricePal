@@ -1,22 +1,9 @@
 import Hero from "./components/hero";
 import PricePreview from "./components/price-preview";
 import Feature from "./components/feature";
-import { apiProducts } from "../services/products";
-import { useEffect } from "react";
-import { apiCompanies } from "../services/companies";
 import ContactUs from "./components/contact-us";
 
 const LandingPage = () => {
-  const fetchProducts = async () => {
-    // const res = await apiProducts();
-    const res = await apiCompanies();
-    console.log("Products--->", res.data);
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
   return (
     <div>
       <Hero />
