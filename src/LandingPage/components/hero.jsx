@@ -19,8 +19,7 @@ const Hero = () => {
         <div className="col-span-4 flex flex-col gap-8 justify-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 leading-tight">
             Explore real-time commodity prices
-            <br className="hidden md:block" />
-            in Ghana
+            <br className="hidden md:block" /> in Ghana
           </h1>
           <p className="ibm-plex-mono-semibold text-lg sm:text-xl md:text-2xl mb-8 text-red-600 font-semibold">
             <Typewriter
